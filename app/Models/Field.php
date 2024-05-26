@@ -5,21 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class Field extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'email',
-        'phone',
-        'field_id', 
+        'description',
     ];
 
-    public function field()
+    /**
+     * Get the students associated with the field.
+     */
+    public function students()
     {
-        return $this->belongsTo(Field::class);
+        return $this->hasMany(Student::class);
     }
-
-    
 }

@@ -16,6 +16,12 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            // $table->unsignedBigInteger('field_id');
+            // $table->foreign('field_id')->references('id')->on('fields');
+            $table->foreignId('field_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
