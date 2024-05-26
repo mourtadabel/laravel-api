@@ -3,123 +3,96 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Student;
-
-use Validator;
-
+use App\Models\Field; 
 
 class StudentController extends Controller
 {
-    
     public function index()
     {
-        $student = Student::all();
+        $students = Student::with('field')->get();
+
         $data = [
-
-            'status' => '200',
-            'student' => $student
-
+            'status' => 200,
+            'students' => $students->map(function ($student) {
+                $fieldName = $student->field ? $student->field->name : null; 
+                return [
+                    'name' => $student->name,
+                    'email' => $student->email,
+                    'phone' => $student->phone,
+                    'field' => $fieldName 
+                ];
+            })
         ];
-        return response()->json($data,200);
-    }
 
+        return response()->json($data, 200);
+    }
 
     public function upload(Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'name'=>'required',
-            'email'=>'required|email',
-            'phone'=>'required'
-
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'field' => 'required|string',
         ]);
 
-        if ($validator->fails())
-        {
-            $data = [
+        $field = Field::where('name', $request->field)->first();
 
-                'status'=>'422',
-                'message'=>$validator->messages()
-    
-            ];
-            
-            return response()->json($data,422);
+        if (!$field) {
+            return response()->json(['error' => 'Field not found'], 404);
         }
-        else 
-        {
-            $student = new Student(); 
 
-            $student->name=$request->name;
-            $student->email=$request->email;
-            $student->phone=$request->phone;
+        $student = new Student();
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->field_id = $field->id; 
+        $student->save();
 
-            $student->save(); 
-
-            $data=[
-                'status'=>200,
-                'message'=>'Data uploaded successfully'
-            ];
-            return  response()->json($data,200);
-        }
-        
+        return response()->json(['message' => 'Data successfully added'], 201);
     }
 
-
-    public function edit (Request $request, $id)
+    public function edit($id, Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'name'=>'required',
-            'email'=>'required|email',
-            'phone'=>'required'
+        $student = Student::find($id);
 
+        if (!$student) {
+            return response()->json(['error' => 'Student not found'], 404);
+        }
+
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'field' => 'required|string',
         ]);
 
-        if ($validator->fails())
-        {
-            $data = [
+        $field = Field::where('name', $request->field)->first();
 
-                'status'=>'422',
-                'message'=>$validator->messages()
-    
-            ];
-            
-            return response()->json($data,422);
+        if (!$field) {
+            return response()->json(['error' => 'field not found'], 404);
         }
-        else 
-        {
-            $student = Student::find($id); 
 
-            $student->name=$request->name;
-            $student->email=$request->email;
-            $student->phone=$request->phone;
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->field_id = $field->id;
+        $student->save();
 
-            $student->save(); 
-
-            $data=[
-                'status'=>200,
-                'message'=>'Data updated successfully'
-            ];
-            return  response()->json($data,200);
-        }
-        
+        return response()->json(['message' => 'Student successfully updated'], 200);
     }
 
-    
-    public function delete ($id)
+    public function delete($id)
     {
-        
-            $student = Student::find($id); 
+        $student = Student::find($id);
 
-            $student->delete(); 
+        if (!$student) {
+            return response()->json(['error' => 'Student not found'], 404);
+        }
 
-            $data=[
-                'status'=>200,
-                'message'=>'Data deleted successfully'
-            ];
-            return  response()->json($data,200);
-        
-        
+        $student->delete();
+
+        return response()->json(['message' => 'Student successfully deleted'], 200);
     }
 }
