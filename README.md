@@ -171,4 +171,4 @@ L'API renvoie des données au format JSON.
 Cette API est soumise à un quota de 1000 requêtes par heure par utilisateur.
 
 ## Support
-Pour toute question ou problème, veuillez contacter mohamed@api-club.com.
+Pour toute question ou problème, veuillez contacter mohamed@api-laravel.com
