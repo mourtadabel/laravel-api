@@ -171,6 +171,7 @@ L'API Club permet de gérer des étudiants, leurs domaines d'étude, des clubs e
 - Paramètres : Aucun
 - Réponses :
   - 200 OK : Liste des étudiants du club récupérée avec succès.
+![apiclubstudentget](https://github.com/mourtadabel/laravel-api/assets/146818987/1126fc08-1501-4443-b400-75118e8e45b7)
 
 ## Format de réponse
 L'API renvoie des données au format JSON.
