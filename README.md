@@ -1,4 +1,4 @@
-# Documentation de l'API Club
+# Documentation de l'API 
 
 ## Introduction
 L'API Club permet de gérer des étudiants, leurs domaines d'étude, des clubs et les relations entre les étudiants, leurs  les clubs au sein d'une institution éducative.
