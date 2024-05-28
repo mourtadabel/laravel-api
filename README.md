@@ -7,7 +7,7 @@ L'API Club permet de gérer des étudiants, leurs domaines d'étude, des clubs e
   Laravel 
   - URL : https://laravel.com/
 ## base de données : 
-`/MCD et MLD`
+`MCD et MLD`
 ![bd-api-laravel](https://github.com/mourtadabel/laravel-api/assets/146818987/755f62c1-a7fa-437b-a0d7-6a25799e3ad6)
 
 ## Gestion des Étudiants
