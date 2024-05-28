@@ -20,6 +20,11 @@ class Student extends Model
     {
         return $this->belongsTo(Field::class);
     }
+    
+    public function clubs()
+    {
+        return $this->belongsToMany(Club::class);
+    }
 
     
 }
