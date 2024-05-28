@@ -1,8 +1,11 @@
 # Documentation de l'API Club
 
 ## Introduction
-L'API Club permet de gérer des étudiants, des domaines d'étude, des clubs et les relations entre les étudiants, leurs filières et les clubs au sein d'une institution éducative.
+L'API Club permet de gérer des étudiants, leurs domaines d'étude, des clubs et les relations entre les étudiants, leurs  les clubs au sein d'une institution éducative.
 
+## technologies utilisés : 
+  Laravel 
+  - URL : https://laravel.com/
 ## Gestion des Étudiants
 
 ### Récupérer la liste des étudiants
@@ -160,9 +163,6 @@ L'API Club permet de gérer des étudiants, des domaines d'étude, des clubs et 
 - Paramètres : Aucun
 - Réponses :
   - 200 OK : Liste des étudiants du club récupérée avec succès.
-
-## Authentification et autorisation
-Cette API nécessite une authentification pour accéder à certaines fonctionnalités, veuillez contacter l'administrateur pour obtenir les informations de connexion.
 
 ## Format de réponse
 L'API renvoie des données au format JSON.
