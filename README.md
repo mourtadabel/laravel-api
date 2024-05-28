@@ -9,6 +9,7 @@ L'API Club permet de gérer des étudiants, leurs domaines d'étude, des clubs e
 ## base de données : 
 `MCD et MLD`
 ![bd-api-laravel](https://github.com/mourtadabel/laravel-api/assets/146818987/755f62c1-a7fa-437b-a0d7-6a25799e3ad6)
+![sqlapi](https://github.com/mourtadabel/laravel-api/assets/146818987/fd7f7400-b5ba-457f-8824-1edcb838a5f4)
 
 ## Gestion des Étudiants
 
@@ -19,6 +20,7 @@ L'API Club permet de gérer des étudiants, leurs domaines d'étude, des clubs e
 - Paramètres : Aucun
 - Réponses :
   - 200 OK : Liste des étudiants récupérée avec succès.
+![apistudentsget](https://github.com/mourtadabel/laravel-api/assets/146818987/c0d87c34-3e0c-4678-b611-1f4b81b4dde0)
 
 ### Ajouter un nouvel étudiant
 - URL : `/students`
@@ -65,6 +67,7 @@ L'API Club permet de gérer des étudiants, leurs domaines d'étude, des clubs e
 - Paramètres : Aucun
 - Réponses :
   - 200 OK : Liste des domaines d'étude récupérée avec succès.
+![apifieldsget](https://github.com/mourtadabel/laravel-api/assets/146818987/55c14cb8-5491-4529-81fe-621c2ab7b978)
 
 ### Ajouter un nouveau domaine d'étude
 - URL : `/fields`
@@ -107,6 +110,7 @@ L'API Club permet de gérer des étudiants, leurs domaines d'étude, des clubs e
 - Paramètres : Aucun
 - Réponses :
   - 200 OK : Liste des clubs récupérée avec succès.
+![apiclubsget](https://github.com/mourtadabel/laravel-api/assets/146818987/f0f7b84f-b551-4936-9df9-7c98f4c5178d)
 
 ### Ajouter un nouveau club
 - URL : `/clubs`
